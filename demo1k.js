@@ -30,37 +30,40 @@ while(l--) a.push(new (function() {
   }
 }));
 t = setInterval(function () {
-  B = a.length, G = p.length;
-  c.fillStyle = 'rgba(0,0,0,.5)';
+  B = a[o], G = p[o];
+  c[T] = 'rgba(0,0,0,.5)';
   c.rect(0, 0, u, h);
   c.fill();
-  c.fillStyle = W;
+  c[T] = W;
   G == 9 && B > 0 && a.shift() && B--
   while (B--) a[B].d()
-  c.fillStyle = g;
+  c[T] = g;
   while (G--)
     c.fillText(p[G], H.indexOf(p[G]) * w, m)
   i = c.getImageData(0,0,u,h);
   z = i.data;
-  l = z.length;
+  l = z[o];
   k += 2
   while (l-=4) {
-    D = M.sqrt(P(X - (l/4)% u, 2) + P(Y - M.floor(l / 4 / u), 2)) ;
-    b = 99 - D;
+    b = 99 - M.sqrt(P(X - (l/4)% u, 2) + P(Y - M.floor(l / 4 / u), 2));
     if (0 < b) {
-      n = M.sin((D - k%25) / 4);
+      n = M.sin((99 - b - k%25) / 4);
       z[l] = (b - z[l]) * n;
       z[l+1] = (b - z[l+1]) * n;
       z[l+2] = (b - z[l+2]) * n
     }
   }
   c.putImageData(i, 0, 0);
+  
 }, 80);
 c.font = w+"px Arial";
 d.onmousemove = function (e) { X = e.clientX; Y = e.clientY }
 g = c.createLinearGradient(0, 180, 0, m);
 g.b = g.addColorStop;
-g.b(0, W = '#8f8');
-g.b(.5, '#efe');
+g.b(0, W = '#9f9');
+g.b(.5, '#fff');
 g.b(.5, W);
 g.b(1, '#afa');
+
+T='fillStyle';
+o='length';
