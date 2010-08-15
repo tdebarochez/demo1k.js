@@ -8,8 +8,7 @@ r = M.random,
 e = M.round,
 P = M.pow,
 H = " js1k.com",
-s = u / 40,
-w = s * 2,
+w = 40,
 a = [],
 p = [],
 m = h / 2,
@@ -18,15 +17,18 @@ X = h,
 Y = 200,
 k = 0,
 C.width = u,
-C.height = h
+C.height = h,
+T='fillStyle',
+o='length';
 while(l--) a.push(new (function() {
-  var x = e(r() * s) * w,
+  var x = e(r() * 20) * w,
   y = r() * h,
-  C = H[e(r() * 8)];
+  C = H[e(r() * 8)],
+  s = e(r() * 10) + 5;
   this.d = function () {
-    (y += s) > h + w && (x = e(r() * s) * w) & (y = 0);
+    (y += s) > h + w && (x = e(r() * 20) * w) & (y = 0);
     c.fillText(C, x-w, y);
-    H[x / w - 1] == C && y == m && p.indexOf(C) < 0 && G < 9 && p.push(C);
+    H[x / w - 1] == C && y > m - 15  && y < m + 15 && p.indexOf(C) < 0 && G < 9 && p.push(C);
   }
 }));
 t = setInterval(function () {
@@ -45,25 +47,19 @@ t = setInterval(function () {
   l = z[o];
   k += 2
   while (l-=4) {
-    b = 99 - M.sqrt(P(X - (l/4)% u, 2) + P(Y - M.floor(l / 4 / u), 2));
+    b = 99 - P(P(X - (l/4)% u, 2) + P(Y - M.floor(l / 4 / u), 2), .5);
     if (0 < b) {
-      n = M.sin((99 - b - k%25) / 4);
-      z[l] = (b - z[l]) * n;
-      z[l+1] = (b - z[l+1]) * n;
-      z[l+2] = (b - z[l+2]) * n
+      n = M.sin(b/5 + (k%50)/8) * M.cos(b/5 +(k%50)/8) *4;
+      z[l+3] -= b * n
     }
   }
   c.putImageData(i, 0, 0);
-  
 }, 80);
 c.font = w+"px Arial";
 d.onmousemove = function (e) { X = e.clientX; Y = e.clientY }
 g = c.createLinearGradient(0, 180, 0, m);
 g.b = g.addColorStop;
-g.b(0, W = '#9f9');
+g.b(0, W = '#7d7');
 g.b(.5, '#fff');
 g.b(.5, W);
 g.b(1, '#afa');
-
-T='fillStyle';
-o='length';
