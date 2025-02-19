@@ -5,4 +5,4 @@ This project is my humble submission to [the competition js1k.com](http://js1k.c
 
 JS compression made with yuicompressor-2.4.2
 
-[demo](http://tdebarochez.github.com/demo1k.js/)
+[demo](http://tdebarochez.github.io/demo1k.js/)
